@@ -1,28 +1,40 @@
-// pages/poetry/poetry.js
+// pages/write/write.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    phtml: 'test',
-    domain: 'https://www.shangsanruoshui.top',
-    title: '',
-    author: '',
-    content: '',
-    poe_class: {
-      'content_width': '13rem'
-    }
+    domain:'https://www.shangsanruoshui.top',
+    title:'',
+    content:''
   },
 
-  /**
-   * 首页获取诗集
-   */
-  getPoetry: function () {
+  //输入标题
+  inputtitle: function (e) {
+    this.setData({
+      title: e.detail.value
+    })
+  },
+
+  //输入内容
+  inputcontent: function (e) {
+    this.setData({
+      content: e.detail.value
+    })
+  },
+  //发布
+  fabu:function(e){
+    var title=this.data.title;
+    var content=this.data.content;
     var th = this;
     wx.request({
-      url: this.data.domain + '/poetry/Index/getPoetry', //仅为示例，并非真实的接口地址
+      url: this.data.domain + '/poetry/Index/postPoetry', //仅为示例，并非真实的接口地址
       data: {
+        "title": title,
+        "content": content,
+        "user_id":1,
+        "author":'现代人'
       },
       dataType: 'json',
       header: {
@@ -30,25 +42,28 @@ Page({
       },
       success(res) {
         var r = res.data;
-        th.setData({ title: r.response.title, author: r.response.author, content: r.response.content })
-        var len = r.response.content.split("，");
-        if (len[0].length > 5) {
+        if(r.code==0){
+          wx.showToast({
+            title:'发布成功！',
+            icon: 'none'
+          })
           th.setData({
-            poe_class: {
-              'content_width': '16rem'
-            }
-          });
+            content:'',
+            title:''
+          })
+        }else{
+          wx.showToast({
+            title: r.message,
+            icon:'none'
+          })
         }
       }
     })
+
   },
 
-  /**
-   * 点击获取下一首
-   */
-  nextPoetry: function () {
-    this.getPoetry();
-  },
+
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -61,7 +76,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getPoetry();
+
   },
 
   /**

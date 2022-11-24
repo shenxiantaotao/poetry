@@ -1,0 +1,74 @@
+<!-- 用户id数据 -->
+<view class="head">
+  <view class="head-img">
+    <image src='{{loginInfo.avatarUrl}}' wx:if="{{ isLogin }}"></image>
+  </view>
+  <view class="logs-mi" wx:if="{{ isLogin }}">
+    <view class="logs-top">
+      <view class="logs-name">{{loginInfo.nickName}}</view>
+      <!-- <view class="name-level">{{loginInfo.member_level
+        <=1 ? '普通用户': 'VIP用户'}}</view> -->
+      </view>
+      <view class="logs-id">ID:{{loginInfo.gender}}</view>
+    </view>
+    <!-- <image class="loge-besom" src='../../image/icon-08.png' wx:if="{{ isLogin }}"></image> -->
+    <view class="logs-login" wx:else bindtap='login'>请先登录</view>
+  </view>
+  <!-- 数量数据 -->
+  <view class="logs-data">
+    <!-- bindtap='orderBtn' -->
+    <view class="data-record01">
+      <view class="record-top fontNumber">{{loginInfo.history_order_num || 0}}</view>
+      <view class="record-bottom">创作</view>
+    </view>
+    <view class="data-record02" bindtap='integralBtn'>
+      <view class="record-top fontNumber">{{loginInfo.integral || 0}}</view>
+      <view class="record-bottom">关注</view>
+    </view>
+    <view class="data-record03" bindtap='balanceBtn'>
+      <view class="record-top fontNumber">{{loginInfo.balance || 0}}</view>
+      <view class="record-bottom">粉丝</view>
+    </view>
+  </view>
+  <!-- 我的优惠券 -->
+  <view class="logs-coupon" bindtap="couponBtn">
+    <image class="coupon-lf" src='../../image/icon-09.png'></image>
+    <view class="coupon-pl">我的创作数: {{cList.length}}篇</view>
+    <image class="coupon-rt" src='../../image/rt-05.png'></image>
+    <view class="coupon-pr"></view>
+  </view>
+  <view class="logs-indent" bindtap='orderBtn'>
+    <view class="indent-lf">我的收藏</view>
+    <view class="indent-rt">查看全部收藏</view>
+    <image src='../../image/rt-06.png'></image>
+  </view>
+  <!-- 其他功能 -->
+  <view class="logs-function-br"></view>
+  <view class="logs-function" bindtap='bargainBtn'>
+    <image class="function-img01" src='../../image/icon-14.png'></image>
+    <view class="function-p">阅读记录</view>
+    <image class="function-rt" src='../../image/rt-07.png'></image>
+  </view>
+  <view class="logs-function" bindtap='recordBtn'>
+    <image class="function-img01" src='../../image/icon-14.png'></image>
+    <view class="function-p">消息中心</view>
+    <image class="function-rt" src='../../image/rt-07.png'></image>
+  </view>
+  <view class="logs-function" bindtap='dataBtn'>
+    <image class="function-img01" src='../../image/icon-14.png'></image>
+    <view class="function-p">个人信息</view>
+    <image class="function-rt" src='../../image/rt-07.png'></image>
+  </view>
+  <view class="logs-function" bindtap='addressBtn'>
+    <image class="function-img01" src='../../image/icon-14.png'></image>
+    <view class="function-p">系统建议</view>
+    <image class="function-rt" src='../../image/rt-07.png'></image>
+  </view>
+  <view class="logs-function" bindtap="guideBtn">
+    <image class="function-img01" src='../../image/icon-14.png'></image>
+    <view class="function-p">创作打赏</view>
+    <image class="function-rt" src='../../image/rt-07.png'></image>
+  </view>
+
+
+  <view class="unlogin-view" hidden="{{isLogin}}" bindtap="unloginClick"></view>

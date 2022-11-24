@@ -1,0 +1,11 @@
+<!--pages/write/write.wxml-->
+<view class="back">
+<image src="/image/chuanback.jpg"></image>
+<view class="title">
+<input type="text" value="{{title}}" placeholder="此处输入标题" bindinput="inputtitle" bindconfirm="clearinput"></input>
+</view>
+<view class="content">
+<textarea value="{{content}}" placeholder="此处输入内容" bindinput="inputcontent"></textarea>
+</view>
+<button bindtap="fabu">发布</button>
+</view>

@@ -1,6 +1,5 @@
 <!--pages/poetry/poetry.wxml-->
 <view class="back">
-  <cover-image src="/image/b1.jpg"></cover-image>
   <view class="man">
     <view bindtap="nextPoetry">下一首</view>
   </view>
@@ -9,4 +8,5 @@
     <view class="author">{{author}}</view>
     <view class="content" style="width:{{poe_class.content_width}}">{{content}}</view>
   </view>
+  <image src="/image/b1.jpg"></image>
 </view>

@@ -1,14 +1,38 @@
 {
   "pages": [
     "pages/poetry/poetry",
+    "pages/write/write",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/user/user"
   ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/poetry/poetry",
+        "text": "首页",
+        "iconPath": "image/ic2.png",
+        "selectedIconPath": "image/ic1.png"
+      },
+      {
+        "pagePath": "pages/write/write",
+        "text": "创作",
+        "iconPath": "image/ic4.png",
+        "selectedIconPath": "image/ic3.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "image/i2.png",
+        "selectedIconPath": "image/i3.png"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ccc",
+    "navigationBarBackgroundColor": "#333300",
     "navigationBarTitleText": "吟诗一首",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
